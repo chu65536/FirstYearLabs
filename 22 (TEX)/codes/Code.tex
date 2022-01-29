@@ -1,0 +1,115 @@
+\documentclass[9pt, a5paper]{book}
+
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english, russian]{babel}
+\usepackage{amsmath}
+\usepackage{relsize}
+\usepackage[left=1cm,right=1.5cm,top=1cm,bottom=0.5cm,bindingoffset=0cm]{geometry}
+\linespread{0.9}
+
+
+
+\begin{document}
+
+\setcounter{page}{166}
+
+\noindent из (3) и подставляя в (2), ищем ненулевое решение $a_k$ ($k = 1, 2,{}\dots{}, n$) \linebreak
+системы (2). Подставляя найденные значения $a_k$ в (1), получаем при- \linebreak
+ближенное выражение собственной функции, отвечающей найденному \linebreak
+собственному значению. \\
+
+{\bfseries Пример 1.} Найти по методу Ритца приближенное значение наимень- \linebreak
+\indent шего характеристического числа ядра.
+$$K(x, t) = xt; \qquad a = 0, b = 1.$$
+
+\underline {\textsl {Решение}}. В качестве координатной системы функции $\psi_n(x)$ выбираем \linebreak
+систему полиномов Лежандра: $\psi_n(x) = P_n(2x - 1)$. В формуле (1) ограничимся
+двумя слагаемыми, так что
+$$\psi_2(x) = a_1 \cdot P_0(2x - 1) + a_2 \cdot P_1(2x - 1)$$
+Замечая, что
+$$\psi_1 \equiv P_0(2x - 1) = 1; \qquad \psi_2 \equiv P_1(2x - 1) = 2x - 1,$$
+находим
+$$(\psi_1, \psi_1) = \int\limits^1_0 dx = 1, \qquad (\psi_1, \psi_2) = (\psi_2, \psi_1) = \int\limits^1_0 (2x - 1)dx = 0,$$
+$$(\psi_2, \psi_2) = \int\limits^1_0 (2x-1)^2dx = \dfrac{1}{3}.$$
+Далее,
+$$(K\psi_1, \psi_1) = \int\limits^1_0 \left(\int\limits^1_0 K(x, t) \psi_1 (t) dt \right)\psi_1(x)dx = \int\limits^1_0 \int\limits^1_0xt\,dx\,dt = \dfrac{1}{4},$$
+\qquad \ \, $\displaystyle{(K\psi_1, \psi_2) = \int\limits^1_0 \int\limits^1_0 xt(2x - 1)dx\,dt = \dfrac{1}{12},}$
+\vspace{\baselineskip} \par
+\noindent \qquad \ \, $\displaystyle{(K\psi_2, \psi_2) = \int\limits^1_0 \int\limits^1_0 xt(2t - 1)(2x - 1)dx\,dt = \dfrac{1}{36},}$
+
+\vspace{\baselineskip}
+Система (3) в этом случае принимает вид
+
+\begin{equation*}
+   \begin{vmatrix} 
+   \dfrac{1}{4} - \sigma & \dfrac{1}{12} \\
+   \\
+   \dfrac{1}{12} & \dfrac{1}{36}-\dfrac{1}{3}\sigma
+   \end{vmatrix} 
+   = 0,
+\end{equation*}
+или
+$$\sigma^2 - \sigma\left(\dfrac{1}{12} + \dfrac{1}{4}\right) = 0.$$
+\newpage
+\setcounter{page}{167}
+
+\noindent Отсюда $\sigma_1 = 0, \, \sigma_2 = \dfrac{1}{3}.$ Наибольшее собственное значение $\sigma_2 = \dfrac{1}{3},$ значит, \linebreak
+наименьшее характеристическое число $\lambda = \dfrac{1}{\sigma_2} = 3$.
+
+\vspace{\baselineskip}
+\noindent {\bfseries \Large Задачи для самостоятельного решения}
+
+\noindent\rule{13cm}{0.4pt}
+
+\vspace{\baselineskip}
+\noindent По методу Ритца найти наименьшие характеристические числа ядер $(a = 0, \\ b = 1)$:
+
+\begin{equation*}
+\mathlarger {\boldsymbol{340.}} \, K(x, t) = x^2 t^2. \qquad \mathlarger {\boldsymbol{341.}} \, K(x, t) = 
+ \begin{cases}
+   t, & x \geq t, \\
+   x, & x \leq t.
+ \end{cases}
+\end{equation*}
+
+\begin{equation*}
+\mathlarger {\boldsymbol{342.}} \, K(x, t) =
+ \begin{cases}
+   \frac{1}{2}x(2-t), & x \leq t, \\
+   \frac{1}{2}t(2-x), & x \geq t.
+ \end{cases}
+\end{equation*}
+
+\noindent\rule{13cm}{0.4pt}
+
+\vspace{\baselineskip}
+\begin{center}
+{\bfseries \Large $2^{o}$. Метод следов.} Назовём m-м следом ядра $K(x, t)$ число
+\end{center}
+$$A_m = \int\limits^b_a K_m(t,t)\,dt,$$
+Где $K_m(x,t)$ означает m-е итерированное ядро.
+
+Для наименьшего характеристического числа $\lambda_1$ при достаточно \linebreak
+большом m справедлива следующая приближенная формула:
+$$|\lambda_1| \approx \sqrt{\frac{A_{2m}}{A_{2m+2}}}.\eqno(4)$$ 
+\noindent Формула (4) дает значение $|\lambda_1|$ с избытком.
+
+Следы четного порядка для симметричного ядра вычисляются по формуле
+
+$$A_{2m} = \int\limits^b_a \int\limits^b_a K^2_m(x,t)\,dx\,dt=2 \quad \int\limits^b_a \int\limits^b_a K^2_m(x,t)\,dt\,dx.\eqno(5)$$
+
+{\bfseries Пример 2.} Найти по методу следов первое характеристическое число \linebreak
+ядра
+
+\begin{equation*}
+ K(x,t)=
+ \begin{cases}
+   t, & x \geq t, \\
+   x, & x \leq t,
+ \end{cases}
+ \quad a = 0, b = 1.
+\end{equation*}
+
+\end{document}
